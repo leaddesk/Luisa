@@ -1,0 +1,73 @@
+// The Luisa design system color tokens. Should be generated from a single source of truth
+
+$swatches: (
+	"leadblue": (
+		"100": #423eea,
+	),
+	"devblue": (
+		"100": #1e156a,
+		"90": #4f53af,
+		"60": #91a3e1,
+		"30": #bdcdf4,
+		"10": #e4e6f9,
+	),
+	"headset": (
+		"100": #246df7,
+		//Missing
+		"60": #7ba7fa,
+		"30": #b9d0fc,
+		"10": #e9f0fe,
+	),
+	"gray": (
+		"100": #3c3c3c,
+		"90": #666666,
+		"60": #9a9ba2,
+		"30": #d2d6de,
+		"10": #f1f2f6,
+	),
+	"green": (
+		"100": #2f8351,
+		//Missing
+		"60": #47bd76,
+		"30": #6bcf93,
+		"10": #c4e9d3,
+	),
+	"yellow": (
+		"100": #d4b483,
+		//Missing
+		"60": #ffc24e,
+		//Missing
+		"10": #fce7ad,
+	),
+	"red": (
+		"100": #c7303e,
+		"90": #f72438,
+		"60": #ee7884,
+		//Missing
+		"10": #edbcc1,
+	),
+	"pink": (
+		"100": #eb4b98,
+		//Missing
+		"60": #f393c1,
+		//Missing
+		"10": #fdedf4,
+	),
+);
+
+
+// Output all swatches as css variables, making them globally available, in the following format:
+// --l-swatch-[swatch name]-[swatch-shade-number]
+
+:root {
+
+	@each $swatch, $shades in $swatches {
+		--l-swatch-#{$swatch}: var(--l-swatch-#{$swatch}-100);
+
+		@each $shade, $hex in $shades {
+			--l-swatch-#{$swatch}-#{$shade}: #{$hex};
+		}
+
+	}
+
+}
