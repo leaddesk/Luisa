@@ -1,0 +1,10 @@
+@use '../../functions/swatch' as *;
+
+// The color mixin.
+// Usage:
+// @include luisa-color( "[swatch name]", "[swatch shade number]", "[if it should output as css variable: "variable"])
+//NOTE: Quotes are mandatory
+
+@mixin color($swatch, $shade: "100", $type: "") {
+	color: swatch($swatch, $shade);
+}

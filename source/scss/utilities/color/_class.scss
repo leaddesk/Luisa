@@ -1,0 +1,25 @@
+@use '../../tokens/swatches' as *;
+@use 'mixin' as *;
+
+// The color utility class generator.
+// Makes a .l-color:swatch:shade available for each color tokens.
+
+.l-color {
+	@each $swatch, $shades in $swatches {
+		&\:#{$swatch} {
+
+			@each $shade, $hex in $shades {
+				@if $shade == "100" {
+					&, &\:#{$shade} {
+						@include color($swatch, $shade);
+					}
+				}
+				@else {
+					&\:#{$shade} {
+						@include color($swatch, $shade);
+					}
+				}
+			}
+		}
+	}
+}
