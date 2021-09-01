@@ -1,0 +1,25 @@
+@use '../../tokens/swatches' as *;
+@use 'mixin' as *;
+
+// The background color utility class generator.
+// Makes a .l-background:swatch:shade available for each color token.
+
+.l-background {
+	@each $swatch, $shades in $swatches {
+		&\:#{$swatch} {
+
+			@each $shade, $hex in $shades {
+				@if $shade == "100" {
+					&, &\:#{$shade} {
+						@include background($swatch, $shade);
+					}
+				}
+				@else {
+					&\:#{$shade} {
+						@include background($swatch, $shade);
+					}
+				}
+			}
+		}
+	}
+}
