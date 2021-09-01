@@ -1,0 +1,28 @@
+@use '../tokens/swatches' as *;
+
+// The swatch function, raw output of swatches.
+// Usage:
+// swatch( "[swatch name]", "[swatch shade number]" )
+
+@function swatch($swatch, $shade: "100", $type: "") {
+
+	@if not map-get($swatches, $swatch) {
+		@warn "Unknown swatch name: #{$swatch}.";
+	}
+	@else if not map-get($swatches, $swatch, $shade) {
+		@warn "Invalid shade number: #{$shade}.";
+	}
+
+	@if $type == variable {
+		// Depends on the variables being set on root already.
+		// Falls back to using regular color code if not set.
+		// Returns a css custom property: var() with a corresponding fallback
+
+		@return var(--l-swatch-#{$swatch}-#{$shade}, map-get($swatches, $swatch, $shade))
+	}
+	@else {
+		// Returns a color code
+		@return map-get($swatches, $swatch, $shade);
+	}
+
+}
