@@ -1,6 +1,5 @@
 .DS_Store
 /node_modules
-/build
 
 /.nova
 /config.codekit3
