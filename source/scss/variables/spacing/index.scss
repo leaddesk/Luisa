@@ -1,0 +1,17 @@
+@use '../../tokens/spacing' as *;
+
+// Output all spacings as css variables, making them globally available, in the following format:
+// --l-spacing-[spacing type]-[amount]
+// Currently this process converts the token multipliers to an equivalent of 16x => 1rem (16px)
+
+:root {
+
+	@each $type, $amounts in $spacing {
+
+		@each $amount, $multiple in $amounts {
+			--l-spacing-#{$type}-#{$amount}: #{$multiple/16*1rem};
+		}
+
+	}
+
+}

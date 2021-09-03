@@ -54,20 +54,3 @@ $swatches: (
 		"10": #fdedf4,
 	),
 );
-
-
-// Output all swatches as css variables, making them globally available, in the following format:
-// --l-swatch-[swatch name]-[swatch-shade-number]
-
-:root {
-
-	@each $swatch, $shades in $swatches {
-		--l-swatch-#{$swatch}: var(--l-swatch-#{$swatch}-100);
-
-		@each $shade, $hex in $shades {
-			--l-swatch-#{$swatch}-#{$shade}: #{$hex};
-		}
-
-	}
-
-}
