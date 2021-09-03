@@ -7,12 +7,15 @@ The idea is to provide different levels of implementation, and multiple ways of 
 * luisa.mixins.css – All, but only, mixins
 * luisa.classes.css – All, but only, the utility classes
 
-### Colors
+### Swatches
 #### Background
     mixin usage: @include luisa.background("[swatch]","[shade#]")
     class usage: .l-background:swatch:shade
-#### Colors
+#### Color
     mixin usage: @include luisa.color("[swatch]","[shade#]")
     class usage: .l-color:swatch:shade
 ### Typography
 ### Spacing
+#### Border radius
+    mixin usage: @include luisa.border-radius("[direction]","[size]")
+    class usage: .l-border-radius:direction:size
