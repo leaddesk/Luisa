@@ -1,0 +1,25 @@
+// The Luisa design system spacing tokens. Should be generated from a single source of truth
+
+$spacing: (
+	"distance": (
+		"6xs": 1,
+		"5xs": 2,
+		"4xs": 4,
+		"3xs": 8,
+		"2xs": 12,
+		"xs": 16,
+		"sm": 20,
+		"md": 24,
+		"lg": 32,
+		"xl": 40,
+		"2xl": 48,
+		"3xl": 56,
+		"4xl": 64,
+		"5xl": 80,
+	),
+	"radius": (
+		"s": 4,
+		"m": 8,
+		"l": 16,
+	),
+);
