@@ -1,0 +1,65 @@
+@use '../../functions/space' as *;
+
+// The margin mixin.
+// Usage:
+// @include luisa-margin( "[direction]", "[size]")
+// Supports both directional and logical properties
+// NOTE: Quotes are mandatory
+
+@mixin margin($direction: "box", $multiple: "xs") {
+	$rule-value: space(distance, $multiple)/16*1rem;
+
+	@if $direction == "inline" {
+		margin-inline: $rule-value;
+	}
+	@else if $direction == "left-right" {
+		margin-left: $rule-value;
+		margin-right: $rule-value;
+	}
+
+
+
+	@else if $direction == "block" {
+		margin-block: $rule-value;
+	}
+	@else if $direction == "top-bottom" {
+		margin-top: $rule-value;
+		margin-bottom: $rule-value;
+	}
+
+
+
+	@else if $direction == "inline-start" {
+		margin-inline-start: $rule-value;
+	}
+	@else if $direction == "left" {
+		margin-left: $rule-value;
+	}
+	@else if $direction == "inline-end" {
+		margin-inline-end: $rule-value;
+	}
+	@else if $direction == "right" {
+		margin-right: $rule-value;
+	}
+
+
+
+	@else if $direction == "block-start" {
+		margin-inline-start: $rule-value;
+	}
+	@else if $direction == "top" {
+		margin-left: $rule-value;
+	}
+	@else if $direction == "block-end" {
+		margin-inline-end: $rule-value;
+	}
+	@else if $direction == "bottom" {
+		margin-right: $rule-value;
+	}
+
+
+
+	@else {
+		margin: $rule-value;
+	}
+}

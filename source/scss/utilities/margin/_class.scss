@@ -1,0 +1,60 @@
+@use '../../tokens/spacing' as *;
+@use 'mixin' as *;
+
+// The margin utility class generator.
+// Makes a .l-margin:amount available for each spacing > radius token.
+// Supports both directional and logical properties
+
+.l-margin {
+	@each $type, $amounts in $spacing {
+		@if $type == distance {
+			@each $amount, $multiple in $amounts {
+
+				&\:#{$amount},
+				&\:box\:#{$amount}  {
+					@include margin("box", #{$amount});
+				}
+
+				&\:inline\:#{$amount}  {
+					@include margin("inline", #{$amount});
+				}
+				&\:left-right\:#{$amount}  {
+					@include margin("left-right", #{$amount});
+				}
+
+				&\:block\:#{$amount}  {
+					@include margin("block", #{$amount});
+				}
+				&\:top-bottom\:#{$amount}  {
+					@include margin("top-bottom", #{$amount});
+				}
+
+				&\:inline-start\:#{$amount} {
+					@include margin("inline-start", #{$amount});
+				}
+				&\:left\:#{$amount} {
+					@include margin("left", #{$amount});
+				}
+				&\:inline-end\:#{$amount} {
+					@include margin("inline-end", #{$amount});
+				}
+				&\:right\:#{$amount} {
+					@include margin("right", #{$amount});
+				}
+
+				&\:block-start\:#{$amount} {
+					@include margin("block-start", #{$amount});
+				}
+				&\:top\:#{$amount} {
+					@include margin("top", #{$amount});
+				}
+				&\:block-end\:#{$amount} {
+					@include margin("block-end", #{$amount});
+				}
+				&\:bottom\:#{$amount} {
+					@include margin("bottom", #{$amount});
+				}
+			}
+		}
+	}
+}
