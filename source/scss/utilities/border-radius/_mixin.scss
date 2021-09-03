@@ -1,0 +1,83 @@
+@use '../../functions/space' as *;
+
+// The border-radius mixin.
+// Usage:
+// @include luisa-border-radius( "[direction]", "[size]")
+// Supports both directional and logical properties
+// NOTE: Quotes are mandatory
+
+@mixin border-radius($direction: "box", $multiple: "m") {
+	$rule-value: space(radius, $multiple)/16*1rem;
+
+	@if $direction == "inline-start" {
+		border-start-start-radius: $rule-value;
+		border-end-start-radius: $rule-value;
+	}
+	@else if $direction == "left" {
+		border-top-left-radius: $rule-value;
+		border-bottom-left-radius: $rule-value;
+	}
+	@else if $direction == "inline-end" {
+		border-start-end-radius: $rule-value;
+		border-end-end-radius: $rule-value;
+	}
+	@else if $direction == "right" {
+		border-top-right-radius: $rule-value;
+		border-bottom-right-radius: $rule-value;
+	}
+
+
+
+	@else if $direction == "block-start" {
+		border-start-start-radius: $rule-value;
+		border-start-end-radius: $rule-value;
+	}
+	@else if $direction == "top" {
+		border-top-left-radius: $rule-value;
+		border-top-right-radius: $rule-value;
+	}
+	@else if $direction == "block-end" {
+		border-end-start-radius: $rule-value;
+		border-end-end-radius: $rule-value;
+	}
+	@else if $direction == "bottom" {
+		border-bottom-left-radius: $rule-value;
+		border-bottom-right-radius: $rule-value;
+	}
+
+
+
+	@else if $direction == "start-start" {
+		border-start-start-radius: $rule-value;
+	}
+	@else if $direction == "top-left" {
+		border-top-left-radius: $rule-value;
+	}
+
+	@else if $direction == "start-end" {
+		border-start-end-radius: $rule-value;
+	}
+	@else if $direction == "top-right" {
+		border-top-right-radius: $rule-value;
+	}
+
+	@else if $direction == "end-start" {
+		border-end-start-radius: $rule-value;
+	}
+	@else if $direction == "bottom-left" {
+		border-bottom-left-radius: $rule-value;
+	}
+
+	@else if $direction == "end-end" {
+		border-end-end-radius: $rule-value;
+	}
+	@else if $direction == "bottom-right" {
+		border-bottom-right-radius: $rule-value;
+	}
+
+
+
+	@else {
+		border-radius: $rule-value;
+	}
+}

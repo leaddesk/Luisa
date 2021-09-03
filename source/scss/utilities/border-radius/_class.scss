@@ -1,0 +1,73 @@
+@use '../../tokens/spacing' as *;
+@use 'mixin' as *;
+
+// The border-radius utility class generator.
+// Makes a .l-border-radius:amount available for each spacing > radius token.
+// Supports both directional and logical properties
+
+.l-border-radius {
+	@each $type, $amounts in $spacing {
+		@if $type == radius {
+			@each $amount, $multiple in $amounts {
+				&\:#{$amount},
+				&\:box\:#{$amount}  {
+					@include border-radius("box", #{$amount});
+				}
+
+				&\:inline-start\:#{$amount} {
+					@include border-radius("inline-start", #{$amount});
+				}
+				&\:left\:#{$amount} {
+					@include border-radius("left", #{$amount});
+				}
+				&\:inline-end\:#{$amount} {
+					@include border-radius("inline-end", #{$amount});
+				}
+				&\:right\:#{$amount} {
+					@include border-radius("right", #{$amount});
+				}
+
+				&\:block-start\:#{$amount} {
+					@include border-radius("block-start", #{$amount});
+				}
+				&\:top\:#{$amount} {
+					@include border-radius("top", #{$amount});
+				}
+				&\:block-end\:#{$amount} {
+					@include border-radius("block-end", #{$amount});
+				}
+				&\:bottom\:#{$amount} {
+					@include border-radius("bottom", #{$amount});
+				}
+
+				&\:start-start\:#{$amount} {
+					@include border-radius("start-start", #{$amount});
+				}
+				&\:top-left\:#{$amount} {
+					@include border-radius("top-left", #{$amount});
+				}
+
+				&\:start-end\:#{$amount} {
+					@include border-radius("start-end", #{$amount});
+				}
+				&\:top-right\:#{$amount} {
+					@include border-radius("top-right", #{$amount});
+				}
+
+				&\:end-start\:#{$amount} {
+					@include border-radius("end-start", #{$amount});
+				}
+				&\:bottom-left\:#{$amount} {
+					@include border-radius("bottom-left", #{$amount});
+				}
+
+				&\:end-end\:#{$amount} {
+					@include border-radius("end-end", #{$amount});
+				}
+				&\:bottom-right\:#{$amount} {
+					@include border-radius("bottom-right", #{$amount});
+				}
+			}
+		}
+	}
+}
