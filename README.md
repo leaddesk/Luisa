@@ -17,6 +17,8 @@ The idea is to provide different levels of implementation, and multiple ways of 
     class usage: .l-color:swatch:shade
 ### Typography
 ### Spacing
+#### Margin
+#### Padding
 #### Border radius
     mixin usage: @include luisa.border-radius("[direction]","[size]")
     class usage: .l-border-radius:direction:size
