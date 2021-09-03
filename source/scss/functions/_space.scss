@@ -1,0 +1,28 @@
+@use '../tokens/spacing' as *;
+
+// The swatch function, raw output of swatches.
+// Usage:
+// swatch( "[swatch name]", "[swatch shade number]" )
+
+@function space($variant: "distance", $multiple: "3xs", $type: "") {
+
+	@if not map-get($spacing, $variant) {
+		@warn "Unknown spacing variant: #{$variant}.";
+	}
+	@else if not map-get($spacing, $variant, $multiple) {
+		@warn "Invalid spacing size: #{$multiple}.";
+	}
+
+	@if $type == variable {
+		// Depends on the variables being set on root already.
+		// Falls back to using regular color code if not set.
+		// Returns a css custom property: var() with a corresponding fallback
+
+		@return var(--l-spacing-#{$variant}-#{$multiple}, map-get($spacing, $variant, $multiple))
+	}
+	@else {
+		// Returns a color code
+		@return map-get($spacing, $variant, $multiple);
+	}
+
+}
