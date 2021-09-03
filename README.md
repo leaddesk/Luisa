@@ -4,6 +4,7 @@ The idea is to provide different levels of implementation, and multiple ways of 
 
 ## Testable development styles are currently available in the build folder
 * luisa.all.css – Everything
+* luisa.variables.css – All, but only, css custom properties
 * luisa.mixins.css – All, but only, mixins
 * luisa.classes.css – All, but only, the utility classes
 
