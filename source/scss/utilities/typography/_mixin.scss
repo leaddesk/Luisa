@@ -1,0 +1,21 @@
+@use '../../functions/typography' as *;
+
+// The background color mixin.
+// Usage:
+// @include luisa-background( "[swatch name]", "[swatch shade number]", "[if it should output as css variable: "variable"])
+//NOTE: Quotes are mandatory
+
+@mixin typography($variant: "body", $size: "300") {
+	$specs: typography($variant, $size);
+
+	font-size: map-get($specs, "size")*1rem;
+	line-height: map-get($specs, "line-height");
+	letter-spacing: map-get($specs, "letter-spacing")*1em;
+
+	@if $variant == "headline" {
+		font-weight: 500;
+	}
+	@else if $variant == "body" {
+		font-weight: inherit;
+	}
+}

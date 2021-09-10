@@ -1,0 +1,58 @@
+// The Luisa design system typography tokens. Should be generated from a single source of truth
+
+$typography: (
+	"headline": (
+		"100": (
+			"size": 0.875,
+			"line-height": 1.50,
+			"letter-spacing": 0.010,
+		),
+		"200": (
+			"size": 1,
+			"line-height": 1.45,
+			"letter-spacing": 0.010,
+		),
+		"300": (
+			"size": 1.125,
+			"line-height": 1.40,
+			"letter-spacing": 0.010,
+		),
+		"400": (
+			"size": 1.25,
+			"line-height": 1.35,
+			"letter-spacing": 0.015,
+		),
+		"500": (
+			"size": 1.5,
+			"line-height": 1.30,
+			"letter-spacing": 0.015,
+		),
+		"600": (
+			"size": 2,
+			"line-height": 1.25,
+			"letter-spacing": 0.020,
+		),
+	),
+	"body": (
+		"100": (
+			"size": 0.75,
+			"line-height": 1,
+			"letter-spacing": 0.000,
+		),
+		"200": (
+			"size": 0.875,
+			"line-height": 1.25,
+			"letter-spacing": 0.000,
+		),
+		"300": (
+			"size": 1,
+			"line-height": 1.5,
+			"letter-spacing": 0.000,
+		),
+		"400": (
+			"size": 1.125,
+			"line-height": 1.65,
+			"letter-spacing": 0.000,
+		),
+	)
+);

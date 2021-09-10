@@ -1,0 +1,21 @@
+@use '../tokens/typography' as *;
+
+// The typography function, raw output of type sizes.
+// Usage:
+// typography( "[typography variant]", "[size]" )
+
+@function typography($variant: "body", $size: "300") {
+
+	@if not map-get($typography, $variant) {
+		@warn "Unknown typography variant: #{$variant}.";
+	}
+	@else if not map-get($typography, $variant, $size) {
+		@warn "Invalid typography variant size: #{$size}.";
+	}
+
+
+		// Returns a typography variant
+		@return map-get($typography, $variant, $size);
+
+
+}
