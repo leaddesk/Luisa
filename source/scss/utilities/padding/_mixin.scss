@@ -1,0 +1,65 @@
+@use '../../functions/space' as *;
+
+// The padding mixin.
+// Usage:
+// @include luisa-padding( "[direction]", "[size]")
+// Supports both directional and logical properties
+// NOTE: Quotes are mandatory
+
+@mixin padding($direction: "box", $multiple: "xs") {
+	$rule-value: space(distance, $multiple)/16*1rem;
+
+	@if $direction == "inline" {
+		padding-inline: $rule-value;
+	}
+	@else if $direction == "left-right" {
+		padding-left: $rule-value;
+		padding-right: $rule-value;
+	}
+
+
+
+	@else if $direction == "block" {
+		padding-block: $rule-value;
+	}
+	@else if $direction == "top-bottom" {
+		padding-top: $rule-value;
+		padding-bottom: $rule-value;
+	}
+
+
+
+	@else if $direction == "inline-start" {
+		padding-inline-start: $rule-value;
+	}
+	@else if $direction == "left" {
+		padding-left: $rule-value;
+	}
+	@else if $direction == "inline-end" {
+		padding-inline-end: $rule-value;
+	}
+	@else if $direction == "right" {
+		padding-right: $rule-value;
+	}
+
+
+
+	@else if $direction == "block-start" {
+		padding-inline-start: $rule-value;
+	}
+	@else if $direction == "top" {
+		padding-left: $rule-value;
+	}
+	@else if $direction == "block-end" {
+		padding-inline-end: $rule-value;
+	}
+	@else if $direction == "bottom" {
+		padding-right: $rule-value;
+	}
+
+
+
+	@else {
+		padding: $rule-value;
+	}
+}

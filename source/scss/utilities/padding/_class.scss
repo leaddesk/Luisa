@@ -1,0 +1,60 @@
+@use '../../tokens/spacing' as *;
+@use 'mixin' as *;
+
+// The padding utility class generator.
+// Makes a .l-padding:amount available for each spacing > radius token.
+// Supports both directional and logical properties
+
+.l-padding {
+	@each $type, $amounts in $spacing {
+		@if $type == distance {
+			@each $amount, $multiple in $amounts {
+
+				&\:#{$amount},
+				&\:box\:#{$amount}  {
+					@include padding("box", #{$amount});
+				}
+
+				&\:inline\:#{$amount}  {
+					@include padding("inline", #{$amount});
+				}
+				&\:left-right\:#{$amount}  {
+					@include padding("left-right", #{$amount});
+				}
+
+				&\:block\:#{$amount}  {
+					@include padding("block", #{$amount});
+				}
+				&\:top-bottom\:#{$amount}  {
+					@include padding("top-bottom", #{$amount});
+				}
+
+				&\:inline-start\:#{$amount} {
+					@include padding("inline-start", #{$amount});
+				}
+				&\:left\:#{$amount} {
+					@include padding("left", #{$amount});
+				}
+				&\:inline-end\:#{$amount} {
+					@include padding("inline-end", #{$amount});
+				}
+				&\:right\:#{$amount} {
+					@include padding("right", #{$amount});
+				}
+
+				&\:block-start\:#{$amount} {
+					@include padding("block-start", #{$amount});
+				}
+				&\:top\:#{$amount} {
+					@include padding("top", #{$amount});
+				}
+				&\:block-end\:#{$amount} {
+					@include padding("block-end", #{$amount});
+				}
+				&\:bottom\:#{$amount} {
+					@include padding("bottom", #{$amount});
+				}
+			}
+		}
+	}
+}
