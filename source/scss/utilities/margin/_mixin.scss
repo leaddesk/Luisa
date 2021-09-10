@@ -45,13 +45,13 @@
 
 
 	@else if $direction == "block-start" {
-		margin-inline-start: $rule-value;
+		margin-block-start: $rule-value;
 	}
 	@else if $direction == "top" {
 		margin-left: $rule-value;
 	}
 	@else if $direction == "block-end" {
-		margin-inline-end: $rule-value;
+		margin-block-end: $rule-value;
 	}
 	@else if $direction == "bottom" {
 		margin-right: $rule-value;
