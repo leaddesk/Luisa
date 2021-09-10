@@ -1,0 +1,238 @@
+@use 'scss/variables' as *;
+@use 'scss/functions/swatch' as *;
+@use 'scss/functions/space' as *;
+@use 'scss/utilities/mixins' as luisa;
+
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+
+:focus {
+	outline: 0.2em solid swatch("leadblue");
+}
+
+body {
+	@include luisa.background("gray", "10");
+	@include luisa.color("devblue");
+
+	font-family: "Roboto", sans-serif;
+}
+
+body {
+	@include luisa.typography("body", "300");
+}
+
+h1, .h1, .s1 {
+	@include luisa.typography("headline", "600");
+	margin-block: 0.5em;
+}
+h2, .h2, .s2 {
+	@include luisa.typography("headline", "500");
+	margin-block: 0.5em;
+}
+h3, .h3, .s3 {
+	@include luisa.typography("headline", "400");
+	margin-block: 0.5em;
+}
+h4, .h4, .s4 {
+	@include luisa.typography("headline", "300");
+	margin-block: 0.5em;
+}
+h5, .h5, .s5 {
+	@include luisa.typography("headline", "200");
+	margin-block: 0.5em;
+}
+h6, .h6, .s6 {
+	@include luisa.typography("headline", "100");
+	margin-block: 0.5em;
+}
+
+.s1, .s2, .s3, .s4, .s5, .s6 {
+	@include luisa.color("devblue", "90");
+	font-weight: 400;
+}
+
+a {
+	@include luisa.color("leadblue");
+}
+
+code {
+	@include luisa.background("gray", "30");
+	@include luisa.color("gray", "100");
+	//@include luisa.border-radius("s");
+	@include luisa.padding("block","6xs");
+	@include luisa.padding("inline","4xs");
+	box-shadow: inset 0 0 0.2em  swatch("gray", "60");
+	font-family: "Roboto mono", monospace;
+}
+
+dl {
+	dt {
+		font-weight: 500;
+	}
+	dd {
+		margin: unset;
+		@include luisa.margin("block-end","3xs");
+	}
+}
+
+ul, ol {
+	@include luisa.padding("inline-start", "xs");
+}
+
+.ul {
+	list-style: initial;
+}
+
+nav, [role="navigation"] {
+	ul, ol {
+		list-style: none;
+		padding: unset;
+	}
+
+	// Revert lists with list-class AND their child lists (this might be to much)
+	.ul, .ol {
+		&,
+		& ul,
+		& ol {
+
+			list-style: revert;
+			@include luisa.padding("inline-start", "xs");
+		}
+	}
+}
+
+blockquote {
+	@include luisa.padding("inline-start", "xs");
+	@include luisa.margin("inline-start", "xs");
+	border-inline-start: 0.2em solid swatch("devblue", "100");
+}
+
+
+table {
+	@include luisa.typography("body", "200");
+	line-height: 1.5;
+
+	background-color: white;
+	min-width: 100%;
+	table-layout: fixed;
+	border-collapse: collapse;
+
+	th, td {
+		@include luisa.padding("inline", "4xs");
+		@include luisa.padding("block", "3xs");
+		text-align: start;
+		overflow: hidden;
+		text-overflow: ellipsis;
+
+		&:first-child {
+			@include luisa.padding("inline-start", "2xs");
+		}
+		&:last-child {
+			@include luisa.padding("inline-end", "2xs");
+		}
+	}
+	tbody tr:nth-child(even) {
+		@include luisa.background("gray", "10");
+	}
+	tbody tr {
+		//border-block-end: 0.2em solid transparent;
+
+		&:hover {
+			//@include luisa.background("gray", "30");
+			//border-color: swatch("devblue", "100");
+			box-shadow: inset 0 0 0 0.15em   swatch("gray", "60");
+		}
+	}
+	thead tr,
+	tfoot tr {
+		@include luisa.background("devblue", "10");
+	}
+
+	caption {
+		@extend .h4;
+		text-align: left;
+	}
+}
+
+
+button, .button {
+	appearance: none;
+	display: inline-block;
+	border: unset;
+	font-family: inherit;
+	cursor: default;
+	width: max-content;
+
+	@include luisa.typography("body", "200");
+	@include luisa.border-radius("box", "s");
+	@include luisa.padding("block", "3xs");
+	@include luisa.padding("inline", "2xs");
+	@include luisa.background("devblue", "100");
+	color: white;
+
+	&:hover, &:focus {
+		@include luisa.background("leadblue", "100");
+	}
+
+	&[disabled] {
+		@include luisa.background("gray", "60");
+	}
+
+	&.waiting {
+		color: transparent;
+		position: relative;
+
+
+		&:after {
+			@keyframes spin {
+				100% {
+					transform:rotate(360deg);
+				}
+			}
+			animation:spin 1s linear infinite;
+
+			position: absolute;
+			inset: 50%;
+			translate: -50% -50%;
+
+			clip-path: circle(50%);
+			mask-image: radial-gradient(circle farthest-side at center, transparent 70%,white 80%,  white 90%);
+			background-image: conic-gradient(rgba(255,255,255,0), rgba(255,255,255,1));
+			//border-radius: 100em;
+			display: inline-block;
+			content: "";
+			width: 1em;
+			height: 1em;
+			//background: red;
+		}
+	}
+}
+
+
+.loading,
+.loading\:content > * {
+	position: relative;
+	color: transparent;
+
+	&:before {
+		@keyframes shine {
+			0% {
+				background-position: 0% ;
+			}
+			100% {
+				background-position: 200% ;
+			}
+		}
+		content: "Loading content...";
+		position: absolute;
+		inset-inline-start: 0;
+		animation:shine 3s ease-out reverse infinite;
+		@include luisa.border-radius("box", "s");
+		background-image: linear-gradient( 90deg, swatch("gray","30"), swatch("gray","10"), swatch("gray","30") );
+		background-size: 200%;
+		background-position: inline-start;
+	}
+
+
+}
